@@ -1,0 +1,39 @@
+
+
+html file:
+==============
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<form method="POST" action="http://localhost/arunphp/raj.php" enctype="multipart/form-data"> // important enctype
+
+Choose Your File From Disk:
+	<input type="file" name="fd1">
+		<input type="submit" name="s1" value="clickme"></input>
+
+	</form>
+</body>
+</html>
+
+
+php file:
+============
+<?php
+echo "<br> file name : ".$_FILES["fd1"]["name"];
+echo "<br> tmp_name : ".$_FILES["fd1"]["tmp_name"];
+echo "<br> file size : ".$_FILES["fd1"]["size"];
+echo "<br> file error : ".$_FILES["fd1"]["error"];
+echo "<br> file type : ".$_FILES["fd1"]["type"];
+
+if(move_uploaded_file($_FILES["fd1"]["tmp_name"], "folder1/copy2.jpeg"))
+{
+	echo "<br>file uploaded successfully in your arun folder";
+}
+else
+{
+	echo "file uploaded not successfully";
+}
+?>
