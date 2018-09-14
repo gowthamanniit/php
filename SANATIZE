@@ -1,0 +1,30 @@
+SANITIZE:
+    USE: TO REMOVE INVALID CHARACTER'S
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<form method="post" action="http://localhost/arunphp/sanitize.php"> 
+		Enter email:<input type="text" name="t1"></input>
+		<input type="submit" value="check format"></input>
+	</form>
+</body>
+</html>
+=========================
+<?php
+$em=$_POST["t1"];
+$kk=filter_var($em,FILTER_SANITIZE_EMAIL);
+echo "<br>email remove chars :".$kk;
+$kk=filter_var($em,FILTER_SANITIZE_URL);
+echo "<br>url remove chars :".$kk;
+$kk=filter_var($em,FILTER_SANITIZE_NUMBER_FLOAT);
+echo "<br>float remove chars :".$kk;
+$kk=filter_var($em,FILTER_SANITIZE_STRING);
+echo "<br>string remove chars :".$kk;
+$kk=filter_var($em,FILTER_SANITIZE_SPECIAL_CHARS);
+echo "<br>remove SPECAIL chars :".$kk;
+$kk=filter_var($em,FILTER_SANITIZE_NUMBER_INT);
+echo "<br>int remove chars :".$kk;
+?>
