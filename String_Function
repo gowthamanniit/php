@@ -1,0 +1,44 @@
+<?PHP
+
+#$text1=$_POST["t1"];
+#$k=strlen($text1);
+#$k=strcmp($text1, "ARUN");
+
+//$k=strpos("arun alex","a",1);
+//echo " answer  ".$k;
+//echo strstr("arun alex","alex1");
+//echo substr_count("arun alex kumar alex arun alex","alex");
+//echo str_replace("alex", "arun", "arun alex alex aruan arun alex");
+//echo substr("arun alex dsfdsf", 2);
+//echo "<br>".substr("arun alex dsfdsf", 2,2);
+
+//print_r (explode(",", "arun,alex,arun,mari,kumar"));
+
+$kk=explode(",", "arun,alex,arun,mari,kumar");  // string to array
+
+print_r($kk);
+echo "<br>";
+print_r(implode($kk));   // array  to string
+echo "<br>";
+print_r(implode(",", $kk)); // array to string with separator ,
+
+echo strtoupper("arun gowthaMAN");
+echo strtolower("arun gowthaMAN");
+echo "<br>";
+//==================================================
+print_r(str_split("arun alex pandiyan"));  // String to char array
+echo "<br>";
+print_r(str_split("arun alex pandiyan",2));  // String to String array
+
+$arr=str_split("arun alex pandiyan",2);
+
+foreach ($arr as $key => $value) {
+	echo "<br> $key  = $value";
+//=============================================
+}
+
+echo "<br>".chr(65);
+echo "<br>".ord("A");
+
+echo "<br>".strrev("arun alex");
+?>
