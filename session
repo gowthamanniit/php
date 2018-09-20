@@ -1,0 +1,78 @@
+
+// note:   session atuomattically delete when user close the browser.
+<?php
+session_start();
+?>
+<html>
+<body>
+	<?php
+// Set session variables
+	
+$_SESSION["favcolor"] = "green";
+$_SESSION["favanimal"] = "cat";
+echo "Session variables are set.";
+?>
+
+</body>
+</html>
+=====================================
+<?php
+	session_start();
+?>
+<html>
+<body>
+<?php
+
+print_r($_SESSION);
+?>
+</body>
+</html>
+//==================================
+
+// session delete
+
+<?php
+	session_start();
+?>
+<html>
+<body>
+<?php
+	//session_unset(); // varibale remove
+	session_destroy(); // total session destroy
+?>
+</body>
+</html>
+
+
+//==============advanced ===================
+<?php
+session_start();
+?>
+<html>
+<body>
+	<?php
+
+// Set session variables
+if(isset($_SESSION))
+{
+	$_SESSION["noview"]=$_SESSION["noview"]+1;
+	echo "Total views :".$_SESSION["noview"];
+	
+}
+else
+{	
+	$_SESSION["favcolor"] = "green";
+	$_SESSION["favanimal"] = "cat";
+	$_SESSION["noview"]=1;
+	
+	echo "Session variables are set.";
+	echo "first time viewed";
+
+}
+?>
+
+</body>
+</html>
+
+
+
