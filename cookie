@@ -1,0 +1,35 @@
+// hint : separately run setcookie, print or echo ...delete....
+
+<?php
+
+	//setcookie("name","gowthaman");
+	//setcookie("age",34);                         
+
+ 
+//  echo $_COOKIE["name"]." ".$_COOKIE["age"];
+
+//=== delete cookie value
+
+	//setcookie("name","",time()-1);
+
+//echo $_COOKIE["name"]." ".$_COOKIE["age"];
+
+>?
+
+cook1.php
+==============
+
+<?php
+setcookie("name","gowtham",time()+10);
+echo "10 seconds only store";
+
+
+?>
+
+
+cook2.php
+=========
+<?php
+
+echo $_COOKIE["name"]." ".$_COOKIE["age"];    // ater 10 seconds delete
+?>
