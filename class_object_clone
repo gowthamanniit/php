@@ -1,0 +1,49 @@
+<?php
+		class arun1
+		{
+					public $a=22,$b=33;
+					var $c=88,$d=99;
+
+					function __construct()
+					{
+							$this->a=100;  // 22 erased  
+							$this->b=200; // 33 erased	and stored 200	 
+							$b=850;   // 33 not erased and not stored 850
+							$c=888;    // $c is new variable not to take class member var
+							$this->c=888;
+							$d=999;
+					}
+					function dis()
+					{
+						echo "a =  ".$this->a;
+						echo "b =  ".$this->b;						
+						echo "c =  ".$this->c;
+						echo "d =  ".$this->d;						
+					}
+		}
+
+		$obj1=new arun1();
+		$obj1->dis();
+			echo "<br>";
+		$obj1->a=140;   // $a $b as public. so outside the class use.
+		$obj1->b=240; 
+
+		$obj1->dis();
+
+			echo "<br>";
+		//============================clone ===================
+
+		$obj2=clone $obj1;
+
+		$obj2->a=1234;  // do not affect obj1 because $obj2 is cloned
+
+		$obj2->dis();
+		echo "<br>";
+		$obj1->dis();
+
+
+
+
+
+
+?>
