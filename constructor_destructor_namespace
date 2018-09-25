@@ -1,0 +1,55 @@
+// pgm1.php
+<?php
+	
+	include("classobj.php");
+	
+	new alex\arun();
+
+	?>
+  //============classobj.php
+
+<?php
+
+namespace alex;
+	class arun
+	{
+		var $a,$b;
+
+		function __construct($a,$b)
+		{
+				echo "constructor called".$a.$b;
+		}
+
+				// second constructor do not declare
+
+		function __destruct()
+		{
+			$a=0;
+			$b=0;
+			echo "$a $b";
+		}
+					//  only one destructor available
+		
+			function dis()
+		{
+
+			echo "this is class and object example";
+		}
+
+		function dis1($a,$b)
+		{
+			$this->a=$a;
+			$this->b=$b;
+			echo "class and object only".$a.$b;
+		}
+	}
+	
+	$obj=new arun(222,555);
+	$obj1=new arun(33,44); 
+
+	$obj->dis();
+	$obj->dis1(33,44);
+	arun::dis();
+
+?>
+
