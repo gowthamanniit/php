@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<form name="aa" method="post" action="http://localhost/arunphp/Insert_select.php">
+
+			<h1><center>Student Details Inserted Form</center></h1>
+			Enter Roll no:<input type="text" name="rno"></input><br>
+			Enter Name   :<input type="text" name="name"></input><br>
+			Enter Mark   :<input type="text" name="mark"></input><br>
+			<input type="submit" name="insert" value="Insert Data"></input><br>
+
+
+	</form>
+
+
+</body>
+</html>
+//==============================================insert======================================================
+<?php
+
+	$rno=$_POST["rno"];
+	$name=$_POST["name"];
+	$mark=$_POST["mark"];
+
+	$conn=mysqli_connect("localhost","root","");
+	if($conn)
+	{
+
+		$db=mysqli_select_db($conn,"arunalex");
+
+		//if(mysqli_query($conn,"insert into student values(1002,'gowthaman',77)"))
+		if(mysqli_query($conn,"insert into student values(".$rno.",'".$name."',".$mark.")"))
+			echo "record inserted success";
+		else
+			echo "record failure";
+		//echo "$db";
+		//	echo "success";
+	}
+	else
+	{
+	echo "connectio failure";
+	}
+
+	mysqli_close($conn);
+
+?>
+//===================================check database========================================================
+<?php
+	$conn=mysqli_connect("localhost","root","");
+	if($conn)
+	{
+	$db=mysqli_select_db($conn,"arunalex1");
+	if($db)
+	{
+		echo "database available";
+
+
+		if(mysqli_query($conn,"insert into student values(1003,'gowthaman',77)"))
+			echo "record inserted success";
+		else
+			echo "record failure";
+	}	
+	
+	else
+		echo "database not available".mysqli_error($conn);
+	}
+	else
+	{
+		echo "connection not available";
+	}
+	mysqli_close($conn);
+?>
+//==================================================select================================================================
+<?php
+	$conn=mysqli_connect("localhost","root","");
+	if($conn)
+	{
+	$db=mysqli_select_db($conn,"arunalex");
+	if($db)
+	{
+		echo "database available";
+		$res=mysqli_query($conn,"select * from student");
+
+			echo "<br><br><br><center><table border='2'><tr><th>roll no </th><th>Name</th><th>Mark</th></tr>";
+			while($row=mysqli_fetch_array($res))
+			{
+
+			echo "<tr><td>".$row['rno']."</td><td>".$row['name']."</td><td>".$row['mark']."</td></tr>";
+			}
+			echo "</table>";
+		}		
+	else
+		echo "database not available".mysqli_error($conn);
+	}
+	else
+	{
+		echo "connection not available";
+	}
+	mysqli_close($conn);
+?>
+//===================================advance_insert========================================================
+<?php
+
+
+	$rno=$_POST["rno"];
+	$name=$_POST["name"];
+	$mark=$_POST["mark"];
+	$check=false;
+
+	$conn=mysqli_connect("localhost","root","");
+	if($conn)
+	{
+	$db=mysqli_select_db($conn,"arunalex");
+	if($db)
+	{
+		echo "database available";
+		$res=mysqli_query($conn,"select * from student");
+
+			echo "<br><br><br><center><table border='2'><tr><th>roll no </th><th>Name</th><th>Mark</th></tr>";
+			while($row=mysqli_fetch_array($res))
+			{
+				if($rno==$row['rno'])
+				{
+					$check=true;
+				}
+			echo "<tr><td>".$row['rno']."</td><td>".$row['name']."</td><td>".$row['mark']."</td></tr>";
+			}
+			echo "</table>";
+
+			if($check==false)
+			{
+				mysqli_query($conn,"insert into student values(".$rno.",'".$name."',".$mark.")");
+				echo "inserted to database: $rno $name $mark";
+			}
+			else
+			{
+				echo "already this rno : $rno inserted into database";
+			}
+		}		
+	else
+		echo "database not available".mysqli_error($conn);
+	}
+	else
+	{
+		echo "connection not available";
+	}
+	mysqli_close($conn);
+?>
+//========================================================================================
