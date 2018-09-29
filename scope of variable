@@ -1,0 +1,13 @@
+<?php
+	$v=200; // global variable scope
+	function fun1()
+	{
+		$v=100;  // local variable scope
+		echo "<br> variable value= $v";  //100 output		
+		global $v;
+		echo "<br> variable value= $v";  //200 output				
+	}
+	echo "<br> variable value= $v";  // global variable scope  200 output
+	fun1();
+	
+?>
