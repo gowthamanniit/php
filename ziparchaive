@@ -1,0 +1,10 @@
+<?php
+$ans="compress.zip"; // final answer
+$zip=new ZipArchive();
+$zip->open($ans,ZIPARCHIVE::CREATE); // OVERWRITE, EXCL,
+$zip->addFile("database1.php");
+$zip->addFile("database2.php");
+$zip->addFile("database3.php");
+$zip->close();
+echo "File Compressed";
+?>
