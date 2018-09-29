@@ -1,0 +1,52 @@
+//=================================================html file=========================
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<form method="post" action="ManagingFiles.php">
+
+		<input type="file" name="srcfile"></input>
+		<input type="submit" value="upload"></input>
+	</form>
+
+</body>
+</html>
+//==============================================file con + read char wise + string wise =================
+	<?php
+		$file1=fopen("789.txt", "r+");
+		if($file1==NULL)
+		{
+			echo "file not availbale";
+			print()
+		}
+		else
+		{
+			echo "file availabe<br>";
+			flock($file1,LOCK_EX);
+
+
+			fclose($file1);
+
+
+		//	$text="abcde\rfghijkl\rmnopqr\rstuvwxyz";
+
+           	/*while(($c=fgetc($file1))!=NULL)
+			{
+			if(ord($c)==13)
+			echo "<br>";					
+			else
+			echo $c;					
+			}*/
+			
+			// another method
+			//while(($ans=fgets($file1))!=NULL)
+			//{
+			//echo $ans."<br>";
+			//}
+		//	fputs($file1,$text);
+			//fclose($file1);	
+		}
+?>
+//=============================================================
