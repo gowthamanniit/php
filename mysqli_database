@@ -1,0 +1,15 @@
+<?php 
+	$ip="127.0.0.1";
+	$user_name="root";
+	$password="";
+	$con=mysqli_connect($ip,$user_name,$password);
+	$query="create database School";
+	if($con){
+		mysqli_query($con, $query);
+		echo "created successfully.."
+	}
+	else{
+		Echo "db creation faild..";
+	}
+	
+?>  
