@@ -1,0 +1,32 @@
+pdo: php data objects : use: connect multiple database
+
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$db = "fathimakarur";
+
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$db",$username, $password);
+    // set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Connected successfully"; 
+    $sqlqry="create table emp (eno int,ename varchar(29),sal int)";
+    $conn->exec($sqlqry);
+    if($conn)
+    {
+    	echo "<script> alert('successfully created the table')</script>";
+    }
+    else
+    	echo "<script> alert('not successfully created table')</script>";
+    
+
+
+    $conn=null; // connection close in PDO
+    }
+
+catch(PDOException $e)
+    {
+    echo "Connection failed: " . $e->getMessage();
+    }
+?>
