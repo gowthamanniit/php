@@ -1,0 +1,9 @@
+<?php
+$authors=array("a","b","c");
+foreach($authors as $val)
+{
+	echo $authors;
+	echo "";
+}
+
+?>
