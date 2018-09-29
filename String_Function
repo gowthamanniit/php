@@ -42,3 +42,98 @@ echo "<br>".ord("A");
 
 echo "<br>".strrev("arun alex");
 ?>
+
+
+//=============================================string function devi sankari =======================================
+
+<html>
+<?php
+$text='my "name "is gowthaman';
+	$ans=addcslashes($text, 'g'); // back slash in front of g
+	echo $ans."<br>";
+
+	$ans=addslashes($text); //  slash in front of "
+	echo $ans."<br>";
+	
+	$ans=chr(65);
+	echo $ans."<br>";   
+
+	$ans=ord('a');  // ascii value
+	echo $ans."<br>";   
+
+	$arr = array('Hello','World!','Beautiful','Day!');
+	echo join(",",$arr);
+	
+	echo "<br>".lcfirst("HELLO WORLD!");
+
+	echo "<br>".ucwords("hello world!");
+	echo "<br>".strtolower("gowthaMAN");
+	
+	echo "<br>".strtoupper("gowthaman");
+	echo "<br>".ltrim("  gowthaman  ")."k";
+	echo "<br>".strlen('   gowthaman   ');
+	echo "<br>".strlen(ltrim('   gowthaman    '));
+	echo "<br>".strlen(rtrim('   gowthaman   '));
+	echo "<br>".strlen(trim('   gowthaman   '));
+   
+   echo "<br>".number_format("100000000");
+    echo "<br>".number_format("1000000",1);
+    echo "<br>".number_format("1000000",2,"*","+");  // number,.2 digits, . =*, ,==+
+
+   echo "<br>".str_replace("man","women","i am MAN");
+   echo "<br>".str_ireplace("man","women","i am MAN");
+   echo "<br>".str_ireplace("man",strtoupper("women"),"i am MAN");
+   $text1="i am man i am man i am man i am man i am man i am man i am man i am man  ";
+   echo "<br>".str_replace("man","women",$text1);
+
+ $str = "Hello world";
+echo "<br>".str_pad($str,20,"-"); // default right
+echo "<br>".str_pad($str,20,"-",STR_PAD_LEFT);
+echo "<br>".str_pad($str,20,"*",STR_PAD_BOTH);  // default right so priorty high
+echo "<br>".str_repeat(".",113);
+echo "<br>".str_repeat("hello ",100);
+echo "<br>".str_word_count("Hello wo rl d!");
+echo "<br>".strcasecmp("Hello world!","HELLO WORLD!");  // 0
+echo "<br>".strcasecmp("hello world!","khello world!");  // 7
+echo "<br>".strcasecmp("ahello world!","hello world!"); // -7
+echo "<br>".strcmp("Hello world!","Hello world!");
+echo "<br>".strcmp("Hello world!","hello world!");
+echo "<br>".stripos("I love php, I love php too!","PHP");
+echo "<br>".stripos("I love php, I love php too!","PHP",8);
+/*
+$text2="I love php, I love php too!I love php, I love php too!I love php, I love php too!I love php, I love php too!I love php, I love php too! php php";
+//echo strlen($text2);
+$pos=0;
+$ans=0;
+$b=stripos($text2,"php");
+echo $b."<br>";
+$ch=$b;
+$a=0;
+$ans=0;
+for($i=$b+1;$i<strlen($text2);$i++)
+{
+
+$ans=stripos($text2,"php",$b+1);
+if($ans==$ch)
+break;
+echo " ".$ans;
+$b=$ans;
+$b++;
+
+
+
+}
+*/
+
+echo "<br>".strrev("Hello World!");
+echo "<br>".substr("Hello world",6);
+echo "<br>".substr("Hello world",3);
+echo "<br>".substr("Hello world",3,7);
+echo "<br>".substr("Hello world",7);
+echo "<br>".substr("Hello world",-1);
+echo "<br>".substr("Hello world",-10);
+
+$str = "<br>"."An example of a long word is: Supercalifragulistic";
+echo wordwrap($str,15,"<br>\n");
+?>
+</html>
