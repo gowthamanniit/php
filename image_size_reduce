@@ -1,0 +1,9 @@
+<!-- image optimization-->
+<?php
+	$filename="studentremove";
+	$img=imagecreatefromjpeg($filename.".jpg");
+	imagejpeg($img,$filename."01.jpg",10);
+	echo "image size 50 kb converted"
+
+
+?>
