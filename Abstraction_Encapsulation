@@ -1,0 +1,20 @@
+<?php
+class Person {
+	private $name;
+
+	public function setName($name) {
+		$this->name = $name;
+	}
+
+	public function getName() {
+		return $this->name;
+	}
+
+
+}
+	$per=new Person();
+	$per->setName("dhevi");
+	$ans=$per->getName();
+	echo "encapsulation details of name ".$ans;
+
+?>
