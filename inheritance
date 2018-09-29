@@ -1,0 +1,26 @@
+<!-- multi level - more than one level -->
+
+<?php
+class Shape {
+	public $name="devi";
+	protected function name1() {
+		echo "<br> I am a shape ".$this->name;
+	}
+}
+class Circle extends Shape {
+	public function name2()
+	{
+		echo " i am a circle ".$this->name;
+		$this->name1();
+	}
+}
+class Square extends Circle {
+	public function name3()
+	{
+		echo " i am a Square ".$this->name;
+	}
+}
+$square = new Square();
+$square->name3();
+echo "<br>".$square->name;
+?>
