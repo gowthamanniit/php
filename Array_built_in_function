@@ -1,0 +1,28 @@
+<?php
+	$arr=array("key1","key2","key3");
+	$brr=array("val1","val2","val3");
+	
+	/*echo $arr[array_rand($arr)];
+	$k=array_chunk($arr,4);
+	print_r($k);*/
+/*
+	$crr=array_combine($arr, $brr);  // to convert associate array key values
+
+	print_r($crr);
+
+	foreach ($crr as $key => $value) {
+		echo "<br><br>key = $key    value = $value";
+	}
+
+	$drr=array_merge($arr,$brr);
+	print_r($drr);
+*/
+	array_push($arr, "key4");
+
+	print_r($arr);
+	
+	array_pop($arr);  // last element delete an array.
+	array_pop($arr);
+	array_pop($arr);
+	print_r($arr);
+?>
