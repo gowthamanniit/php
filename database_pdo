@@ -30,3 +30,92 @@ catch(PDOException $e)
     echo "Connection failed: " . $e->getMessage();
     }
 ?>
+//========================================insert=================================
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$db = "fathimakarur";
+
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$db",$username, $password);
+    // set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Connected successfully"; 
+    $sqlqry="insert into emp values(11,'fathima',65000)";
+    $conn->exec($sqlqry);
+    if($conn)
+    {
+    	echo "<script> alert('successfully inserted the table')</script>";
+    }
+    else
+    	echo "<script> alert('not successfully insert table')</script>";
+    
+
+
+    $conn=null; // connection close in PDO
+    }
+
+catch(PDOException $e)
+    {
+    echo "Connection failed: " . $e->getMessage();
+    }
+?>
+
+//==============================================select=================================
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$db = "fathimakarur";
+
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$db",$username, $password);
+    // set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Connected successfully"; 
+
+    $stmt = $conn->query('SELECT * FROM emp');  
+    
+    while($row = $stmt->fetch())
+    {
+
+    echo "e ID :{$row['eno']}  <br> ".  
+         "e NAME : {$row['ename']} <br> ".  
+          "salary : {$row['sal']}<br>".
+          "--------------------------------<br>";  
+     
+    }
+
+    $conn=null; // connection close in PDO
+    }
+
+catch(PDOException $e)
+    {
+    echo "Connection failed: " . $e->getMessage();
+    }
+?>
+//=======================================================drop database=======================
+<?php  
+    $host = 'localhost';  
+    $user = 'root';  
+    $pass = '';  
+    $conn = mysqli_connect($host, $user, $pass);  
+    if(! $conn )  
+    {  
+      die('Could not connect: ' . mysqli_error());  
+    }  
+    echo 'Connected successfully';  
+   $sqlqry='DROP DATABASE fathimakarur1';
+
+    if(mysqli_query($conn,$sqlqry))
+    {
+        echo "database created successfully";        
+    }
+    else
+    {
+        echo "database not created successfully";        
+    }
+    mysqli_close($conn);  
+    ?>  
+    //==================================
