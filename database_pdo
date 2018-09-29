@@ -18,7 +18,36 @@ catch(PDOException $e)
     echo "Connection failed: " . $e->getMessage();
     }
 ?>
+//===========================================create database ==========================
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
 
+try {
+    $conn = new PDO("mysql:host=$servername",$username, $password);
+    // set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Connected successfully"; 
+    $sqlqry="create database fathimakarur1";
+    $conn->exec($sqlqry);
+    if($conn)
+    {
+    	echo "<script> alert('successfully created database')</script>";
+    }
+    else
+    	echo "<script> alert('not successfully created database')</script>";
+    
+
+
+    $conn=null; // connection close in PDO
+    }
+
+catch(PDOException $e)
+    {
+    echo "Connection failed: " . $e->getMessage();
+    }
+?>
 //===========================================create table===============================
 <?php
 $servername = "localhost";
