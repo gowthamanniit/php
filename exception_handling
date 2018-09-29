@@ -1,0 +1,29 @@
+<?php
+try
+{
+	$a=10;
+	$b=10;
+	$c=$a/$b;
+	echo "answer = $c";
+	$d=array(12,45,56,56,45);
+	$c=count($d);
+	$size=6;
+	if($size<$c)
+	echo "<br>$d[$size]";
+	else
+		throw new Exception("size only give <=4");
+}
+catch(Exception $fathima)
+{
+	echo "error name =". $fathima->getMessage();
+}
+catch(ArithmeticException $e)
+{
+echo "error name = $e";
+}
+finally
+{
+	echo "finished";	
+}
+
+?>
