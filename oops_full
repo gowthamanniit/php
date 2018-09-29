@@ -1,0 +1,353 @@
+Class House {
+
+	public $postCode = “560121”;
+
+	public function ringBell() {
+		echo “Ding Dang Dong”;
+	}
+}
+
+$house = new House();
+
+ex:
+==
+<?php
+Class House {
+
+	var $postCode="123456";
+	public function ringBell()
+	 {
+		echo "Ding Dang Dong".$this->postCode;
+	}
+}
+$house=new House();
+
+$house->ringBell();
+
+?>
+
+
+Visibility or access specifier
+
+Each method and property has its visibility. There are three types of visibility in PHP. They are declared by keywords public, protected and private. Each one of them controls how a method/property can be accessed by outsiders.
+
+Public: It allows anyone from outside access its method/property. This is the default visibility in PHP class when no keywords are prefixed to a method/property.
+
+Protected: It only allows itself or children classes to access its method/property.
+
+Private: It does not allow anyone except itself to access its method/property.
+
+
+class Shape {
+	public function name() {
+		echo "I am a shape";
+	}
+}
+
+class Circle extends Shape {
+
+}
+
+$circle = new Circle();
+$circle->name(); // I am a shape
+
+// full example 
+================
+<?php
+class Shape {
+	public $name="devi";
+	protected function name1() {
+		echo "<br> I am a shape ".$this->name;
+	}
+}
+
+class Circle extends Shape {
+
+	public function name2()
+	{
+		echo " i am a circle ".$this->name;
+		$this->name1();
+	}
+}
+
+$circle = new Circle();
+$circle->name2();
+echo "<br>	shape class public variable :".$circle->name; 
+?>
+
+<!-- multi level - more than one level -->
+
+<?php
+class Shape {
+	public $name="devi";
+	protected function name0() {
+		echo "<br> I am a shape ".$this->name;
+	}
+}
+
+class Circle extends Shape {
+
+	protected function name1()
+	{
+		echo " i am a circle ".$this->name;
+		$this->name0();
+	}
+}
+class Square extends Circle {
+
+	public function name2()
+	{
+		echo " i am a Square ".$this->name;
+		$this->name1();
+     }
+ }
+$square = new Square();
+$square->name2();
+//echo "<br>	shape class public variable :".$circle->name; 
+?>
+
+<!-- Hierarchical - more than one level -->
+<?php
+class Shape {
+	public $name="devi";
+	protected function name0() {
+		echo "<br> I am a shape ".$this->name;
+	}
+}
+
+class Circle extends Shape {
+
+	public function name2()
+	{
+		echo " i am a circle ".$this->name;
+		$this->name0();
+	}
+}
+class Square extends Shape {
+
+	public function name2()
+	{
+		echo " i am a Square ".$this->name;
+		$this->name0();
+     }
+ }
+$circle = new Circle();
+$circle->name2();
+$square = new Square();
+$square->name2();
+//echo "<br>	shape class public variable :".$circle->name; 
+?>
+
+interface : multiple inheritance not support so we can use interface
+
+<?php
+interface father {
+	public function name1();
+}
+
+interface mother {
+	public function name2();
+}
+
+class son implements father,mother {
+	
+	public function name1() {
+		echo "son use father property";
+	}
+	public function name2() {
+		echo "son use mother property";
+	}
+}
+
+$s=new son();
+$s->name1();
+$s->name2();
+
+?>
+
+HYBRID: (BOTH EXTENDS AND IMPLEMENTS)---(COMBINATION OF MULTIPLE AND MULTILEVEL)
+=======
+
+<?php
+class grandfather {
+	protected function name1()
+	{
+		echo "i am a grandfather";
+	}
+}
+
+class father extends grandfather{
+	protected function name2()
+	{
+		echo "i am father";
+	$this->name1();
+}
+}
+interface mother{
+	public function name3();
+}
+
+class son extends father implements mother {
+	
+	public function name4() {
+		echo "i am son";
+		$this->name2();
+
+	}
+	public function name3() {
+		echo "i am mother";
+	}
+}
+
+$s=new son();
+$s->name4();
+$s->name3();
+
+?>
+
+polymorphism
+============
+
+interface Shape {
+	public function name();
+}
+
+class Circle implements Shape {
+	public function name() {
+		echo "I am a circle";
+	}
+}
+
+class Triangle implements Shape {
+	public function name() {
+		echo "I am a triangle";
+	}
+}
+
+function test(Shape $shape) {
+	$shape->name();
+}
+
+test(new Circle()); // I am a circle
+test(new Triangle()); // I am a triangle
+                    
+
+Encapsulation
+Encapsulation is used to hide the values or state of a structured data object inside a class, preventing unauthorized parties' direct access to them. It is a concept that motivates us to think through a method/class responsibility and hide its internal implementation/details accordingly. This will make it easy to modify the internal code in a long run without affecting other part of the system. Visibility is the mechanism for encapsulation.
+
+class Person {
+	private $name;
+
+	public function setName($name) {
+		$this->name = $name;
+	}
+
+	public function getName($name) {
+		return $this->name;
+	}
+}
+
+$robin = new Person();
+$robin->setName('Robin');
+$robin->getName();
+
+ex: encapsulation:
+===================
+<?php
+class Person {
+	private $name;
+
+	public function setName($name) {
+		$this->name = $name;
+	}
+
+	public function getName() {
+		return $this->name;
+	}
+
+
+}
+	$per=new Person();
+	$per->setName("dhevi");
+	$ans=$per->getName();
+	echo "encapsulation details of name ".$ans;
+
+?>
+                    
+Abstraction
+Abstraction is the concept of moving the focus from the details and concrete implementation of things, to the types of things (i.e. classes), the operations available (i.e. methods), etc, thus making the programming simpler, more general, and more abstract. It is like a generalization instead of a specification.
+
+<?php
+class TV {
+	private $isOn = false;
+
+	public function turnOn() {
+		$this->isOn = true;
+	}
+
+	public function turnOff() {
+		$this->isOn = false;
+	}
+}
+
+$tv = new TV();
+$tv->turnOn();
+$tv->turnOff();
+?>
+
+Interface vs Abstract class
+Interface
+Interface declares what methods a class must have without having to implement them. Any class that implements the interface will have to implement details of those declared methods. Interface is not a class, so you can not instantiate an interface. It is useful when you need to enforce some classes to do something.
+
+interface Vehicle {
+	public function startEngine();
+}
+
+class Car implements Vehicle {
+	public function startEngine() {
+		echo "Engine Started";
+	}
+}
+
+
+Abstract class
+Abstract class is able to enforce subclasses to implement methods similar to interface. When a method is declared as abstract in an abstract class, its derived classes must implement that method.
+
+However it is very different from interface. You can have normal properties and methods as a normal class, because it is in fact a class, so it can be instantiated as a normal class.
+
+abstract class Vehicle {
+	abstract public function startEngine();
+
+	public function stopEngine() {
+		echo "Engine stoped";
+	}
+}
+
+class Car extends Vehicle {
+	public function startEngine() {
+		echo "Engine Started";
+	}
+}
+
+ex:
+====
+<?php
+abstract class Vehicle {
+	abstract public function startEngine();
+
+	public function stopEngine() {
+		echo "Engine stoped";
+	}
+}
+
+class Car extends Vehicle {
+	public function startEngine() {
+		echo "Engine Started";
+		$this->stopEngine();
+	}
+}
+
+$car=new Car();
+$car->startEngine();
+
+?>
