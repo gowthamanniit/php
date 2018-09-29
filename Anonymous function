@@ -1,0 +1,6 @@
+<?php
+		$anon_fn=create_function('$length, $breadth','return $length*$breadth;');
+		echo " the area of a rectangle with length 5 and breadth 7 is:";
+		$answer=$anon_fn(5,7);
+		echo "rectangle = $answer"
+  ?>
