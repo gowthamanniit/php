@@ -1,3 +1,57 @@
+
+
+//======================================================database creation ================================
+
+<?php  
+    $host = 'localhost';  
+    $user = 'root';  
+    $pass = '';  
+    $conn = mysqli_connect($host, $user, $pass);  
+    if(! $conn )  
+    {  
+      die('Could not connect: ' . mysqli_error());  
+    }  
+    echo 'Connected successfully';  
+    $sqlqry='CREATE database FathimaLondon';
+
+    if(mysqli_query($conn,$sqlqry))
+    {
+        echo "database created successfully";        
+    }
+    else
+    {
+        echo "database not created successfully";        
+    }
+    mysqli_close($conn);  
+    ?>  
+//===============================================table creation===========================================
+<?php  
+    $host = 'localhost';  
+    $user = 'root';  
+    $pass = '';  
+    $dbname='FathimaLondon';
+
+    $conn = mysqli_connect($host, $user, $pass,$dbname);  
+    if(! $conn )  
+    {  
+      die('Could not connect: ' . mysqli_error());  
+    }  
+    echo 'Connected successfully';  
+    $sqlqry='CREATE table student(rno int,name1 varchar(20),mark int)';
+
+    if(mysqli_query($conn,$sqlqry))
+    {
+        echo "table created successfully";        
+    }
+    else
+    {
+        echo "table not created successfully";        
+    }
+    mysqli_close($conn);  
+    ?>  
+    
+    
+//===============================================================================html===============================
 <!DOCTYPE html>
 <html>
 <head>
@@ -73,7 +127,7 @@
 	}
 	mysqli_close($conn);
 ?>
-//==================================================select================================================================
+//==================================================select mysql_fetch_array================================================================
 <?php
 	$conn=mysqli_connect("localhost","root","");
 	if($conn)
@@ -101,6 +155,34 @@
 	}
 	mysqli_close($conn);
 ?>
+//==============================================select using mysql_fetch_asso()==============================
+
+<?php  
+$host = 'localhost';  
+$user = 'root';  
+$pass = '';  
+$dbname = 'FathimaLondon';  
+$conn = mysqli_connect($host, $user, $pass,$dbname);  
+if(!$conn){  
+  die('Could not connect: '.mysqli_connect_error());  
+}  
+echo 'Connected successfully<br/>';  
+  
+$sql = 'SELECT * FROM emp';  
+$retval=mysqli_query($conn, $sql);  
+  
+if(mysqli_num_rows($retval) > 0){  
+ while($row = mysqli_fetch_assoc($retval)){  
+    echo "EMP ID :{$row['EMP_ID']}  <br> ".  
+         "EMP NAME : {$row['EMP_NAME']} <br> ".  
+         "EMP SALARY : {$row['EMP_SALARY']} <br> ".  
+         "--------------------------------<br>";  
+ } //end of while  
+}else{  
+echo "0 results";  
+}  
+mysqli_close($conn);  
+?>  
 //===================================advance_insert========================================================
 <?php
 
