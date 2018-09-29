@@ -50,3 +50,16 @@
 		}
 ?>
 //=============================================================
+<?php
+/*$file1=$_POST['srcfile'];
+echo "$file1";
+copy($file1, "d:/mmm/444.txt");*/
+
+//rename("123.txt","renamedgowthaman.txt");
+
+//unlink("renamedgowthaman.txt");  //delete
+echo is_writable("456.txt");
+?>
+
+//
+
