@@ -9,3 +9,25 @@ echo "<br>";
 echo "$name it's great";  // raja it's great
 
 ?>
+//=================================================
+
+<?php
+
+		$name="rajaa";
+
+		echo '<br> <textarea>$name</textarea>';
+		echo "<br> <textarea>$name</textarea>";
+
+?>
+
+//============================================
+
+<?php
+
+		$name="rajaa";
+		$name1='hai';
+
+		echo '<br> <textarea>$name1 $name</textarea>';
+		echo "<br> <textarea>$name1 $name</textarea>";
+
+?>
