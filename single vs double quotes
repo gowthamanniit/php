@@ -1,0 +1,11 @@
+<?php
+	
+	$name="raja";  // string
+	
+
+
+echo '$name it\'s great';   // $name it's great
+echo "<br>";
+echo "$name it's great";  // raja it's great
+
+?>
