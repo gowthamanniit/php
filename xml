@@ -1,0 +1,151 @@
+What is XML?
+XML is the acronym for Extensible Markup Language.
+
+XML is used to structure, store and transport data from one system to another.
+
+XML is similar to HTML.
+
+It uses opening and closing tags.
+
+Unlike HTML, XML allows users to define their own tags.
+
+///============================================
+What is DOM?
+DOM is the acronym for Document Object Model.
+
+It’s a cross platform and language neutral standard that defines how to access and manipulate data in;
+
+HTML
+XHTML
+XML
+DOM XML is used to access and manipulate XML documents. It views the XML document as a tree-structure.
+//==============================================================================
+XML Parsers
+An XML parser is a program that translates the XML document into an XML Document Object Model (DOM) Object.
+
+The XML DOM Object can then be manipulated using JavaScript, Python, and PHP etc.
+
+The keyword CDATA which is the acronym for (Unparsed) Character Data is used to ignore special characters such as “<,>” when parsing an XML document.
+//======================================================================================
+XML Document example
+<?xml version="1.0" encoding="utf-8"?>
+
+<employees status = "ok">
+
+        <record man_no = "101">
+
+            <name>Joe Paul</name>
+
+            <position>CEO</position>
+
+        </record>
+
+        <record man_no = "102">
+
+            <name>Tasha Smith</name>
+
+            <position>Finance Manager</position>
+
+        </record>
+
+</employees>
+  HERE,
+
+“<?xml version="1.0" encoding="utf-8"?>” specifies the xml version to be used and encoding
+“<employees status = "ok">” is the root element.
+ “<record…>…</record>” are the child elements of administration and sales respectively.
+ //==========================================================================
+ 
+ How to Read XML using PHP
+ 
+ 
+ <?php
+
+$xml = simplexml_load_file('employees.xml');
+
+echo '<h2>Employees Listing</h2>';
+
+$list = $xml->record;
+
+for ($i = 0; $i < count($list); $i++) {
+
+    echo '<b>Man no:</b> ' . $list[$i]->attributes()->man_no . '<br>';
+
+    echo 'Name: ' . $list[$i]->name . '<br>';
+
+    echo 'Position: ' . $list[$i]->position . '<br><br>';
+
+}
+?>
+  HERE,
+
+“$xml = simplexml_load_file('employees.xml');” uses the simplexml_load_file function to load the file name employees.xml and assign the contents to the array variable $xml.
+“$list = $xml->record;” gets the contents of the record node.
+ “for ($i = 0; $i < count(…)…” is the for loop that reads the numeric array and outputs the results
+“$list[$i]->attributes()->man_no;” reads the man_no attribute of the element
+“$list[$i]->name;” reads the value of the name child element
+“$list[$i]->position;” reads the value of the position child element
+
+//==============================================================
+
+How to Create an XML document using PHP
+
+The following code uses the PHP built in class DOMDocument to create an XML document.
+
+<?php
+
+	$dom = new DOMDocument();
+
+		$dom->encoding = 'utf-8';
+
+		$dom->xmlVersion = '1.0';
+
+		$dom->formatOutput = true;
+
+	$xml_file_name = 'movies_list.xml';
+
+		$root = $dom->createElement('Movies');
+
+		$movie_node = $dom->createElement('movie');
+
+		$attr_movie_id = new DOMAttr('movie_id', '5467');
+
+		$movie_node->setAttributeNode($attr_movie_id);
+
+	$child_node_title = $dom->createElement('Title', 'The Campaign');
+
+		$movie_node->appendChild($child_node_title);
+
+		$child_node_year = $dom->createElement('Year', 2012);
+
+		$movie_node->appendChild($child_node_year);
+
+	$child_node_genre = $dom->createElement('Genre', 'The Campaign');
+
+		$movie_node->appendChild($child_node_genre);
+
+		$child_node_ratings = $dom->createElement('Ratings', 6.2);
+
+		$movie_node->appendChild($child_node_ratings);
+
+		$root->appendChild($movie_node);
+
+		$dom->appendChild($root);
+
+	$dom->save($xml_file_name);
+
+	echo "$xml_file_name has been successfully created";
+?>
+  HERE,
+
+“$dom = new DOMDocument();” creates an instance of DOMDocument class.
+“$dom->encoding = 'utf-8';” sets the document encoding to utf-8
+“$dom->xmlVersion = '1.0';” specifies the version number 1.0
+“$dom->formatOutput = true;” ensures that the output is well formatted
+“$root = $dom->createElement('Movies');” creates the root node named Movies
+“$attr_movie_id = new DOMAttr('movie_id', '5467');” defines the movie id attribute of Movies node
+“$child_node_element_name = $dom->createElement('ElementName', 'ElementValue')” creates the child node of Movies node. ElementName specifies the name of the element e.g. Title. ElementValue sets the child node value e.g. The Campaign.
+“$root->appendChild($movie_node);” appends the movie_node elements to the root node Movies
+“$dom->appendChild($root);” appends the root node to the XML document.
+“$dom->save($xml_file_name);” saves the XML file in the root directory of the web server.
+“echo '<a href= "'.$xml_file_name.'">' . $xml_file_name . '</a> has been successfully created';” creates the link to the XML file.
