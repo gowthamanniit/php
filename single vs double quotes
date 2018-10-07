@@ -31,3 +31,14 @@ echo "$name it's great";  // raja it's great
 		echo "<br> <textarea>$name1 $name</textarea>";
 
 ?>
+//========================================================
+
+<?php
+
+		$name="rajaa";
+		$name1='hai';
+
+		echo '<br> <textarea>$name1 \n \t \v $name</textarea>';  // not work \n \t \v
+		echo "<br> <textarea>$name1 \n \t \v $name</textarea>";  // \n \t \v work
+
+?>
