@@ -1,0 +1,5 @@
+<?php
+	
+	//print "34234","324","23424"; //error // single arg allowed
+	echo "34234","324","23424";   // multiple arg allowed
+?>
